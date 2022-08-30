@@ -1,5 +1,7 @@
 package cn.xionghuihui.middleware.netty.chat.server.boot;
 
+import cn.xionghuihui.middleware.netty.chat.server.handler.HandleClientLoginHandler;
+import cn.xionghuihui.middleware.netty.chat.server.handler.ServerHelloWordHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -55,7 +57,7 @@ public class ChatServer {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
-
+                        nioSocketChannel.pipeline().addLast(new HandleClientLoginHandler());
                     }
                 });
 
