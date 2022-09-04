@@ -1,7 +1,7 @@
 package cn.xionghuihui.middleware.netty.chat.client.handler;
 
 import cn.xionghuihui.middleware.netty.chat.common.packet.PacketCodec;
-import cn.xionghuihui.middleware.netty.chat.common.packet.access.LoginPacket;
+import cn.xionghuihui.middleware.netty.chat.common.packet.access.LoginRequestPacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -16,9 +16,9 @@ public class ClientLoginHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        LoginPacket loginPacket = new LoginPacket();
-        loginPacket.setUserId(UUID.randomUUID().toString());
-        ctx.channel().writeAndFlush(PacketCodec.encode(loginPacket, ctx.alloc()));
+        LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
+        loginRequestPacket.setUserId(UUID.randomUUID().toString());
+        ctx.channel().writeAndFlush(PacketCodec.encode(loginRequestPacket, ctx.alloc()));
         super.channelActive(ctx);
     }
 }

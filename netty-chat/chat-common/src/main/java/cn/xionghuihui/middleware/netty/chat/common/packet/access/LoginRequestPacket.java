@@ -9,16 +9,21 @@ import cn.xionghuihui.middleware.netty.chat.common.packet.Packet;
  * @author 灰灰
  * @since 2022-08-30 23:54:35
  */
-public class LoginPacket extends Packet {
+public class LoginRequestPacket extends Packet {
 
     /**
      * 用户ID
      */
     private String userId;
 
+    /**
+     * 用户名
+     */
+    private String userName;
+
     @Override
     protected int getCommand() {
-        return CommandEnum.CLIENT_LOGIN.getCode();
+        return CommandEnum.LOGIN_REQUEST.getCode();
     }
 
     public String getUserId() {
@@ -27,5 +32,13 @@ public class LoginPacket extends Packet {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

@@ -1,7 +1,9 @@
 package cn.xionghuihui.middleware.netty.chat.common.command;
 
 import cn.xionghuihui.middleware.netty.chat.common.packet.Packet;
-import cn.xionghuihui.middleware.netty.chat.common.packet.access.LoginPacket;
+import cn.xionghuihui.middleware.netty.chat.common.packet.access.LoginRequestPacket;
+import cn.xionghuihui.middleware.netty.chat.common.packet.access.LoginResponsePacket;
+import cn.xionghuihui.middleware.netty.chat.common.packet.message.MessageRequestPacket;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -18,7 +20,18 @@ public enum CommandEnum {
     /**
      * 登录命令
      */
-    CLIENT_LOGIN(1, LoginPacket.class);
+    LOGIN_REQUEST(1, LoginRequestPacket.class),
+
+    /**
+     * 登录的响应结果
+     */
+    LOGIN_RESPONSE(2, LoginResponsePacket.class),
+
+    /**
+     * 客户端发送消息
+     */
+    CLIENT_MESSAGE(20, MessageRequestPacket.class),
+    ;
 
     private final int code;
 
